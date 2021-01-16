@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h4>Welcome to Garage Management System</h4>
+    <br />
+    <div align="center" class="alert-info font-weight-bold ">
+        @TempData["Message"]
+
+    </div>
+
+    <a class="nav-link" asp-area="" asp-controller="WorkshopManagement" asp-action="New">Register and Plan a New Maintenance Job</a>
+
+</div>

@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model WebApp.ViewModels.WorkShopManagementNewVM
+@{ ViewData["Title"] = "Register Customer"; }
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+
+<form asp-controller="WorkshopManagement" asp-action="RegisterAndPlanMaintenanceJob" method="post">
+
+    <div align="center" class="alert-danger font-weight-bold ">
+        @Html.ValidationMessage("Error")
+        @Html.ValidationMessage("Email")
+    </div>
+    
+    <div align="center" class="alert-info font-weight-bold ">
+        @TempData["Message"]
+
+    </div>
+
+    <br />
+
+    <h6 title="CustomerManagement Microservice">Customer Detail</h6>
+
+    <label asp-for="Customer.Name"></label>
+    <input asp-for="Customer.Name" type="text" value="Name1" />
+    @*<span asp-validation-for="Customer.Name" class="text-danger"></span>*@
+
+    <label asp-for="Customer.TelephoneNumber">Phone</label>
+    <input asp-for="Customer.TelephoneNumber" type="text" value="Phone1" />
+    <span asp-validation-for="Customer.TelephoneNumber" class="text-danger"></span>
+
+    <label asp-for="Customer.EmailAddress">Email</label>
+    <input asp-for="Customer.EmailAddress" type="text" value="email@gmai.com" />
+    <span asp-validation-for="Customer.EmailAddress" class="text-danger"></span>
+
+    <hr />
+
+    <h6 title="VehicleManagement Microservice">Vehicle Detail</h6>
+
+    <label asp-for="Vehicle.Brand"></label>
+    <input asp-for="Vehicle.Brand" type="text" value="Brand1" />
+    <span asp-validation-for="Vehicle.Brand" class="text-danger"></span>
+
+    <label asp-for="Vehicle.Type"></label>
+    <input asp-for="Vehicle.Type" type="text" value="Type1" />
+    <span asp-validation-for="Vehicle.Type" class="text-danger"></span>
+
+    <label asp-for="Vehicle.LicenseNumber"></label>
+    <input asp-for="Vehicle.LicenseNumber" type="text" value="License1" />
+    <span asp-validation-for="Vehicle.LicenseNumber" class="text-danger"></span>
+
+    <hr />
+
+    <h6 title="WorkshopManagement Microservice">Maintenance Schedule Detail </h6>
+
+    <label asp-for="MaintenanceJob.StartTime"></label>
+    <input asp-for="MaintenanceJob.StartTime" type="text" value="1/1/2020" />
+    <span asp-validation-for="MaintenanceJob.StartTime" class="text-danger"></span>
+
+    <label asp-for="MaintenanceJob.EndTime"></label>
+    <input asp-for="MaintenanceJob.EndTime" type="text" value="1/1/2020" />
+    <span asp-validation-for="MaintenanceJob.EndTime" class="text-danger"></span>
+
+    <label asp-for="MaintenanceJob.Notes"></label>
+    <input asp-for="MaintenanceJob.Notes" type="text" value="Notess 1" />
+    <span asp-validation-for="MaintenanceJob.Notes" class="text-danger"></span>
+    <hr />
+
+
+    <div class="w-50 p-3 border border-danger">
+        <b> Choose Microservice to Generate Error for Demo purpose</b><br />
+        <span class="text-info font-italic">
+            @Html.RadioButtonFor(model => model.MicroServiceName, "VehicleManagementMicroservice", false) VehicleManagement Microservice<br />
+            @Html.RadioButtonFor(model => model.MicroServiceName, "WorkshopManagementMicroservice", false) WorkshopManagement Microservice<br />
+            @Html.RadioButtonFor(model => model.MicroServiceName, "None", true) None
+        </span>
+    </div>
+    <br />
+
+
+    <span>
+        <button id="SubmitButton" type="submit" class="btn-primary">Schedule Maintenance</button>
+    </span>
+    <span>
+        <a id="CancelButton" asp-action="Index" class="btn-sm" asp-controller="WorkshopManagement">Cancel</a>
+    </span>
+
+</form>

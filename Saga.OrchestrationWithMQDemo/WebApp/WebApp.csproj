@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>e5380a6a-934e-4a58-aa7e-5467a417219d</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+		<PackageReference Include="AutoMapper" Version="8.1.1" />
+		<PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+		<PackageReference Include="Polly" Version="7.1.0" />
+		<PackageReference Include="Refit.HttpClientFactory" Version="5.2.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Logs\" />
+	</ItemGroup>
+
+</Project>
